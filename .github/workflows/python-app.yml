@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       username:
-        description: 'Applicants GitHub Username'
-        required: false  # Set to false if you want this to be optional
+        description: 'Applicant Username'
+        required: false  
         default: ''
       use_external_repo:
         description: 'Use external repository?'
         required: true
-        default: 'false'  # Default to local files unless specified
+        default: 'false'
 
 jobs:
   build-and-test: 
@@ -32,5 +32,16 @@ jobs:
         git fetch my-assessment
         git checkout my-assessment/main -- Advanced_SQL.py SQL.py
         git add Advanced_SQL.py SQL.py
+        mv Advanced_SQL.py Task_1/ # move to correct folder
+        mv SQL.py Task_1/ # move to correct folder
+        git add Task_1/Advanced_SQL.py Task_1/SQL.py
         git commit -m "Added submission files from ${{ github.event.inputs.username }}"
-        git push
+        git push 
+
+    # Building Docker image
+    - name: Build Docker image
+      run: docker build -t my-assessment .
+
+    # Running the Docker container without interactive mode and no Jupyter Notebook
+    - name: Run tests
+      run: docker run --name my-container my-assessment poetry run pytest tests/ -q -p no:warnings --tb=no
