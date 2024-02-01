@@ -26,6 +26,9 @@ def question_1():
     return qry
 
 
+#if this is here it failed
+
+
 
 def question_2():    
     
