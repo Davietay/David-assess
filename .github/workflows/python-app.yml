@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       username:
-        description: 'GitHub Username'
+        description: 'Applicants GitHub Username'
         required: false  # Set to false if you want this to be optional
         default: ''
       use_external_repo:
@@ -33,4 +33,4 @@ jobs:
         git checkout my-assessment/main -- Advanced_SQL.py SQL.py
         git add Advanced_SQL.py SQL.py
         git commit -m "Added submission files from ${{ github.event.inputs.username }}"
-        git push HEAD:${{ github.ref }}
+        git push
