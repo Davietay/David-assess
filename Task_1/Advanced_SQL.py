@@ -1,5 +1,4 @@
-import duckdb
-
+#hi
 
 """
 The database loan.db consists of 3 tables: 
