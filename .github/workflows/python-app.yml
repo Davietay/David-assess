@@ -30,10 +30,7 @@ jobs:
       run: |
         git remote add my-assessment https://github.com/${{ github.event.inputs.username }}/my-assessment.git
         git fetch my-assessment
-        git checkout my-assessment/main -- Advanced_SQL.py SQL.py
-        git add Advanced_SQL.py SQL.py
-        mv Advanced_SQL.py Task_1/ # move to correct folder
-        mv SQL.py Task_1/ # move to correct folder
+        git checkout my-assessment/main -- Task_1/Advanced_SQL.py Task_1/SQL.py
         git add Task_1/Advanced_SQL.py Task_1/SQL.py
         git commit -m "Added submission files from ${{ github.event.inputs.username }}"
         git push 
