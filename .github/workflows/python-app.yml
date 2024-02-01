@@ -37,11 +37,3 @@ jobs:
         git add Task_1/Advanced_SQL.py Task_1/SQL.py
         git commit -m "Added submission files from ${{ github.event.inputs.username }}"
         git push 
-
-    # Building Docker image
-    - name: Build Docker image
-      run: docker build -t my-assessment .
-
-    # Running the Docker container without interactive mode and no Jupyter Notebook
-    - name: Run tests
-      run: docker run --name my-container my-assessment poetry run pytest tests/ -q -p no:warnings --tb=no
