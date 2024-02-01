@@ -21,7 +21,7 @@ def question_1():
     # Find all name-surname combinations that are duplicated in the customers dataset. 
     # Return `Name` and `Surname` columns
 
-    qry = """SELECT name, surname FROM customers GROUP BY name, surname HAVING COUNT(*) > 1;"""
+    qry = """___"""
 
     return qry
 
